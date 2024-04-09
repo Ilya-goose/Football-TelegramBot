@@ -1,4 +1,4 @@
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
@@ -44,6 +44,31 @@ async def cmd_start(message: Message):
     await message.answer(
         f'👋 Здравствуте, {message.from_user.last_name}!\nЯ помогу вам узнать много интересного о ФУТБОЛЕ ⚽\n😇 Пожалуйста, выберите интересующую категорию:',
         reply_markup=murkub)
+
+@dp.message(CommandStart())
+async def cmd_start(message: Message):
+    await message.answer(f'👋 Здравствуте, {message.from_user.last_name}!\nЯ помогу вам узнать много интересного о ФУТБОЛЕ ⚽\n😇 Пожалуйста, выберите интересующую категорию:', reply_markup=murkub)
+
+@dp.message(F.text == '➡ НАЗАД ➡')
+async def news(message: Message):
+    news = scrapping_func()
+    await message.answer('🧐 Выбирайте что вас еще интересует... 🧐', reply_markup=murkub)
+
+# ---
+
+@dp.message(F.text == '📝 Последние новости 📝')
+async def news(message: Message):
+    news = scrapping_func()
+    await message.answer(f'На данный момент получено новостей в количестве: {len(news)} шт...', reply_markup=ReplyKeyboardRemove())
+    time.sleep(1)
+
+    for i, elem in enumerate(news):
+        await message.answer(f'👉 {i + 1}) {elem[0]}\n\n', reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Подробнее', url=elem[1])]]))
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"', reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]], resize_keyboard=True))
+
+# ---
+
+
 
 
 async def main():
