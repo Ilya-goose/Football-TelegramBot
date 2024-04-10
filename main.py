@@ -1,14 +1,24 @@
-from aiogram import Bot, Dispatcher, F
-from aiogram.filters import CommandStart
-from aiogram.types import Message
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-import asyncio
 import requests
 from bs4 import BeautifulSoup
 
-bot = Bot(token='6910912601:AAGuk-ug_YZZ412jjMoW1RXHbftapThUrHY')
-dp = Dispatcher()
+from aiogram import Bot, Dispatcher, F
+from aiogram.filters import CommandStart
+from aiogram.types import Message, FSInputFile
+from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.fsm.state import StatesGroup, State
+from aiogram.fsm.context import FSMContext
 
+import time
+import asyncio
+import sqlite3
+
+
+class Choose_country_season(StatesGroup):
+    choose_count_state = State()
+    choose_season_year = State()
+
+
+# -------------------------------------------------------------------------------------------------------------------------------------------------
 def scrapping_func():
     HEADERS = {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -33,18 +43,31 @@ def scrapping_func():
 
     block = soup.find_all('li', class_='news-item')
 
+    spis = []
+    for item in block:
+        spis.append([item.find('div', class_='news-item__content').text.replace('\n', ''), 'https://www.championat.com' + item.find('a', class_='news-item__title').get('href')])
 
-murkub = ReplyKeyboardMarkup(
-    keyboard=[[KeyboardButton(text='📝 Последние новости 📝'), KeyboardButton(text='🎭 Трансферы 🎭')]],
-    resize_keyboard=True)
+
+    return spis
 
 
-@dp.message(CommandStart())
-async def cmd_start(message: Message):
-    await message.answer(
-        f'👋 Здравствуте, {message.from_user.last_name}!\nЯ помогу вам узнать много интересного о ФУТБОЛЕ ⚽\n😇 Пожалуйста, выберите интересующую категорию:',
-        reply_markup=murkub)
+async def send_photo(data):
+    photo = FSInputFile(f'Трансферы {data[1].split()[0]}/{data[2]}.png')
+    await bot.send_photo(chat_id=data[0], photo=photo)
 
+
+
+# -------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+bot = Bot(token='6910912601:AAGuk-ug_YZZ412jjMoW1RXHbftapThUrHY')
+dp = Dispatcher()
+
+murkub = ReplyKeyboardMarkup(keyboard=([KeyboardButton(text='📝 Последние новости 📝'), KeyboardButton(text='🎭 Трансферы 🎭')],
+                                           [KeyboardButton(text='💰 Стоимости футболистов 💰'), KeyboardButton(text='📌Таблицы турниров📌')],
+                                           [KeyboardButton(text='🕹 Мини-игры 🕹')]), resize_keyboard=True)
+
+# ---
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
     await message.answer(f'👋 Здравствуте, {message.from_user.last_name}!\nЯ помогу вам узнать много интересного о ФУТБОЛЕ ⚽\n😇 Пожалуйста, выберите интересующую категорию:', reply_markup=murkub)
@@ -68,8 +91,234 @@ async def news(message: Message):
 
 # ---
 
+@dp.message(F.text == '🎭 Трансферы 🎭')
+async def choose_country(message: Message, state: FSMContext):
+    await state.set_state(Choose_country_season.choose_count_state)
+    await message.answer('Выберите страну...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='Англия 🇬🇧'), KeyboardButton(text='Германия 🇩🇪')],
+        [KeyboardButton(text='Испания 🇪🇸'), KeyboardButton(text='Франция 🇫🇷')],
+        [KeyboardButton(text='Италия 🇮🇹'), KeyboardButton(text='Россия 🇷🇺')]
+    ], resize_keyboard=True))
 
 
+@dp.message(F.text == 'Англия 🇬🇧')
+async def _(message: Message, state: FSMContext):
+    await state.update_data(choose_country=message.text)
+    await message.answer('Выберите сезон и год...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='Зима 2021'), KeyboardButton(text='Лето 2021')],
+        [KeyboardButton(text='Зима 2022'), KeyboardButton(text='Лето 2022')],
+        [KeyboardButton(text='Зима 2023'), KeyboardButton(text='Лето 2023')],
+        [KeyboardButton(text='Зима 2024')]
+    ], resize_keyboard=True))
+
+
+@dp.message(F.text == 'Германия 🇩🇪')
+async def _(message: Message, state: FSMContext):
+    await state.update_data(choose_country=message.text)
+    await message.answer('Выберите сезон и год...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='Зима 2021'), KeyboardButton(text='Лето 2021')],
+        [KeyboardButton(text='Зима 2022'), KeyboardButton(text='Лето 2022')],
+        [KeyboardButton(text='Зима 2023'), KeyboardButton(text='Лето 2023')],
+        [KeyboardButton(text='Зима 2024')]
+    ], resize_keyboard=True))
+
+
+@dp.message(F.text == 'Испания 🇪🇸')
+async def _(message: Message, state: FSMContext):
+    await state.update_data(choose_country=message.text)
+    await message.answer('Выберите сезон и год...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='Зима 2021'), KeyboardButton(text='Лето 2021')],
+        [KeyboardButton(text='Зима 2022'), KeyboardButton(text='Лето 2022')],
+        [KeyboardButton(text='Зима 2023'), KeyboardButton(text='Лето 2023')],
+        [KeyboardButton(text='Зима 2024')]
+    ], resize_keyboard=True))
+
+
+@dp.message(F.text == 'Франция 🇫🇷')
+async def _(message: Message, state: FSMContext):
+    await state.update_data(choose_country=message.text)
+    await message.answer('Выберите сезон и год...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='Зима 2021'), KeyboardButton(text='Лето 2021')],
+        [KeyboardButton(text='Зима 2022'), KeyboardButton(text='Лето 2022')],
+        [KeyboardButton(text='Зима 2023'), KeyboardButton(text='Лето 2023')],
+        [KeyboardButton(text='Зима 2024')]
+    ], resize_keyboard=True))
+
+
+@dp.message(F.text == 'Италия 🇮🇹')
+async def _(message: Message, state: FSMContext):
+    await state.update_data(choose_country=message.text)
+    await message.answer('Выберите сезон и год...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='Зима 2021'), KeyboardButton(text='Лето 2021')],
+        [KeyboardButton(text='Зима 2022'), KeyboardButton(text='Лето 2022')],
+        [KeyboardButton(text='Зима 2023'), KeyboardButton(text='Лето 2023')],
+        [KeyboardButton(text='Зима 2024')]
+    ], resize_keyboard=True))
+
+
+@dp.message(F.text == 'Россия 🇷🇺')
+async def _(message: Message, state: FSMContext):
+    await state.update_data(choose_country=message.text)
+    await message.answer('Выберите сезон и год...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='Зима 2021'), KeyboardButton(text='Лето 2021')],
+        [KeyboardButton(text='Зима 2022'), KeyboardButton(text='Лето 2022')],
+        [KeyboardButton(text='Зима 2023'), KeyboardButton(text='Лето 2023')],
+        [KeyboardButton(text='Зима 2024')]
+    ], resize_keyboard=True))
+
+    await state.set_state(Choose_country_season.choose_season_year)
+
+# ---
+
+@dp.message(F.text == 'Зима 2021')
+async def _(message: Message, state: FSMContext):
+    data = [message.chat.id]
+    get_data_state = await state.get_data()
+
+    data.append(get_data_state['choose_country'][:])
+
+    await state.update_data(choose_season_year=message.text)
+
+
+    get_data_state = await state.get_data()
+    data.append(get_data_state['choose_season_year'])
+    await send_photo(data)
+    await state.clear()
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+
+
+@dp.message(F.text == 'Лето 2021')
+async def _(message: Message, state: FSMContext):
+    data = [message.chat.id]
+    get_data_state = await state.get_data()
+
+    data.append(get_data_state['choose_country'][:])
+
+    await state.update_data(choose_season_year=message.text)
+
+
+    get_data_state = await state.get_data()
+    data.append(get_data_state['choose_season_year'])
+
+    await send_photo(data)
+    await state.clear()
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+
+
+@dp.message(F.text == 'Зима 2022')
+async def _(message: Message, state: FSMContext):
+    data = [message.chat.id]
+    get_data_state = await state.get_data()
+
+    data.append(get_data_state['choose_country'][:])
+
+    await state.update_data(choose_season_year=message.text)
+
+    get_data_state = await state.get_data()
+    data.append(get_data_state['choose_season_year'])
+
+    await send_photo(data)
+    await state.clear()
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+
+
+@dp.message(F.text == 'Лето 2022')
+async def _(message: Message, state: FSMContext):
+    data = [message.chat.id]
+    get_data_state = await state.get_data()
+
+    data.append(get_data_state['choose_country'][:])
+
+    await state.update_data(choose_season_year=message.text)
+
+    get_data_state = await state.get_data()
+    data.append(get_data_state['choose_season_year'])
+
+    await send_photo(data)
+    await state.clear()
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+
+
+@dp.message(F.text == 'Зима 2023')
+async def _(message: Message, state: FSMContext):
+    data = [message.chat.id]
+    get_data_state = await state.get_data()
+
+    data.append(get_data_state['choose_country'][:])
+
+    await state.update_data(choose_season_year=message.text)
+
+
+    get_data_state = await state.get_data()
+    data.append(get_data_state['choose_season_year'])
+
+    await send_photo(data)
+    await state.clear()
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+
+
+@dp.message(F.text == 'Лето 2023')
+async def _(message: Message, state: FSMContext):
+    data = [message.chat.id]
+    get_data_state = await state.get_data()
+
+    data.append(get_data_state['choose_country'][:])
+
+    await state.update_data(choose_season_year=message.text)
+
+    get_data_state = await state.get_data()
+    data.append(get_data_state['choose_season_year'])
+    await send_photo(data)
+    await state.clear()
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+
+
+@dp.message(F.text == 'Зима 2024')
+async def _(message: Message, state: FSMContext):
+    data = [message.chat.id]
+    get_data_state = await state.get_data()
+    print(get_data_state)
+    data.append(get_data_state['choose_country'][:])
+
+    await state.update_data(choose_season_year=message.text)
+    print(get_data_state)
+
+    get_data_state = await state.get_data()
+    data.append(get_data_state['choose_season_year'])
+    print(get_data_state)
+    print(data)
+    await send_photo(data)
+    await state.clear()
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+
+
+# ---
+
+
+
+
+
+
+
+
+
+
+
+# -------------------------------------------------------------------------------------------------------------------------------------------------
 
 async def main():
     await dp.start_polling(bot)
