@@ -11,11 +11,25 @@ from aiogram.fsm.context import FSMContext
 import time
 import asyncio
 import sqlite3
+from random import sample
+
 
 
 class Choose_country_season(StatesGroup):
     choose_count_state = State()
     choose_season_year = State()
+
+
+class Price_footbollers(StatesGroup):
+    country = State()
+
+
+class Table_country(StatesGroup):
+    contry = State()
+
+
+class Game1(StatesGroup):
+    flag = State()
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -57,6 +71,10 @@ async def send_photo(data):
 
 
 
+
+
+
+
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -67,12 +85,13 @@ murkub = ReplyKeyboardMarkup(keyboard=([KeyboardButton(text='📝 Последн
                                            [KeyboardButton(text='💰 Стоимости футболистов 💰'), KeyboardButton(text='📌Таблицы турниров📌')],
                                            [KeyboardButton(text='🕹 Мини-игры 🕹')]), resize_keyboard=True)
 
+
 # ---
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer(f'👋 Здравствуте, {message.from_user.last_name}!\nЯ помогу вам узнать много интересного о ФУТБОЛЕ ⚽\n😇 Пожалуйста, выберите интересующую категорию:', reply_markup=murkub)
+    await message.answer(f'👋 Здравствуте, {message.from_user.last_name}!\nЯ помогу вам узнать много интересного о ФУТБОЛЕ ⚽️\n😇 Пожалуйста, выберите интересующую категорию:', reply_markup=murkub)
 
-@dp.message(F.text == '➡ НАЗАД ➡')
+@dp.message(F.text == '➡️ НАЗАД ➡️')
 async def news(message: Message):
     news = scrapping_func()
     await message.answer('🧐 Выбирайте что вас еще интересует... 🧐', reply_markup=murkub)
@@ -87,7 +106,7 @@ async def news(message: Message):
 
     for i, elem in enumerate(news):
         await message.answer(f'👉 {i + 1}) {elem[0]}\n\n', reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Подробнее', url=elem[1])]]))
-    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"', reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]], resize_keyboard=True))
+    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"', reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]], resize_keyboard=True))
 
 # ---
 
@@ -184,8 +203,8 @@ async def _(message: Message, state: FSMContext):
     data.append(get_data_state['choose_season_year'])
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
                                                           resize_keyboard=True))
 
 
@@ -204,8 +223,8 @@ async def _(message: Message, state: FSMContext):
 
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
                                                           resize_keyboard=True))
 
 
@@ -223,8 +242,8 @@ async def _(message: Message, state: FSMContext):
 
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
                                                           resize_keyboard=True))
 
 
@@ -242,8 +261,8 @@ async def _(message: Message, state: FSMContext):
 
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
                                                           resize_keyboard=True))
 
 
@@ -251,6 +270,7 @@ async def _(message: Message, state: FSMContext):
 async def _(message: Message, state: FSMContext):
     data = [message.chat.id]
     get_data_state = await state.get_data()
+
 
     data.append(get_data_state['choose_country'][:])
 
@@ -262,8 +282,8 @@ async def _(message: Message, state: FSMContext):
 
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
                                                           resize_keyboard=True))
 
 
@@ -280,8 +300,8 @@ async def _(message: Message, state: FSMContext):
     data.append(get_data_state['choose_season_year'])
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
                                                           resize_keyboard=True))
 
 
@@ -301,20 +321,12 @@ async def _(message: Message, state: FSMContext):
     print(data)
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
                                                           resize_keyboard=True))
 
 
 # ---
-
-
-
-
-
-
-
-
 
 
 
