@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавил скрины для России">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Football-TelegramBot.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Англия/44745676.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Англия/56e470c5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Англия/780d3f6f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Англия/b27818f1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Англия/c9470dbf.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Англия/c95f56ed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Англия/ceb3bbfe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Германия/4538c9f8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Германия/4fb80a4f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Германия/_59eeaf5a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Германия/_841b3375.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Германия/_c981396a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Германия/e6f8b4cf.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Германия/Изображение WhatsApp 2024-04-09 в 20.55.37_e90b1e36.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Испания/0215dfe4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Испания/1ef71dfb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Испания/_d090f547.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Испания/_ec5921e0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Испания/a8a0a8fe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Испания/c72c70d8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Испания/e5bf7cd1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Италия/13c0d81a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Италия/4084e9e9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Италия/4b7fb9fe.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Италия/_90300273.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Италия/a4f194d9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Италия/dcacd541.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Италия/e1e4db12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Россия/11145e42.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Россия/58112304.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Россия/5a463197.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Россия/a855f00c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Россия/c8999963.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Россия/dedaad59.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Россия/f4114529.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Франция/31ddfbe3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Франция/479a7ebf.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Франция/82fd12e8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Франция/a11b85f4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Франция/ba717224.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Франция/e53e217c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Трансферы Франция/e8f9df9e.jpg" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Ilya-goose&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="4a9b5cc3-a078-4b46-ac64-4e26adb30a48" />
+        <option name="url" value="https://github.com/Ilya-goose/Football-TelegramBot" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2eGreIlz4jblCaNW9ucKKpuDIP9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main (1).executor": "Run",
+    "Python.main (4).executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/PyCharm Community Edition 2023.3.2/Projects",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Football-TelegramBot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="" />
+      <created>1711541850400</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711541850400</updated>
+    </task>
+    <task id="LOCAL-00001" summary="created a new project">
+      <option name="closed" value="true" />
+      <created>1711541951431</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711541951431</updated>
+    </task>
+    <task id="LOCAL-00002" summary="created a new project">
+      <option name="closed" value="true" />
+      <created>1712686668232</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712686668232</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Создал бота">
+      <option name="closed" value="true" />
+      <created>1712686729572</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712686729573</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Сделал приветствие для бота">
+      <option name="closed" value="true" />
+      <created>1712687876958</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712687876958</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Начал писать парсер для сбора новостей">
+      <option name="closed" value="true" />
+      <created>1712689285439</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712689285439</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Сделал функцию для новостей">
+      <option name="closed" value="true" />
+      <created>1712696827547</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712696827547</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Начал добавлять скрины для трансферов">
+      <option name="closed" value="true" />
+      <created>1712752006181</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712752006181</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Начал добавлять скрины для трансферов">
+      <option name="closed" value="true" />
+      <created>1713690716468</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1713690716468</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Начал добавлять скрины для трансферов">
+      <option name="closed" value="true" />
+      <created>1713691111154</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1713691111154</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Начал добавлять скрины для трансферов">
+      <option name="closed" value="true" />
+      <created>1713691537361</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713691537361</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Начал добавлять скрины для трансферов">
+      <option name="closed" value="true" />
+      <created>1713691558781</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713691558781</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Добавил скрины для Франции">
+      <option name="closed" value="true" />
+      <created>1713691752261</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713691752261</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Добавил скрины для России">
+      <option name="closed" value="true" />
+      <created>1713691905186</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713691905186</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="created a new project" />
+    <MESSAGE value="Создал бота" />
+    <MESSAGE value="Сделал приветствие для бота" />
+    <MESSAGE value="Начал писать парсер для сбора новостей" />
+    <MESSAGE value="Сделал функцию для новостей" />
+    <MESSAGE value="Create Трансферы" />
+    <MESSAGE value="Начал добавлять скрины для трансферов" />
+    <MESSAGE value="Добавил скрины для Франции" />
+    <MESSAGE value="Добавил скрины для России" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил скрины для России" />
+  </component>
+</project>
