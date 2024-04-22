@@ -4,15 +4,14 @@ from bs4 import BeautifulSoup
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart
 from aiogram.types import Message, FSInputFile
-from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButton, InlineKeyboardMarkup, \
+    InlineKeyboardButton
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 
 import time
 import asyncio
 import sqlite3
-from random import sample
-
 
 
 class Choose_country_season(StatesGroup):
@@ -26,10 +25,6 @@ class Price_footbollers(StatesGroup):
 
 class Table_country(StatesGroup):
     contry = State()
-
-
-class Game1(StatesGroup):
-    flag = State()
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -59,8 +54,8 @@ def scrapping_func():
 
     spis = []
     for item in block:
-        spis.append([item.find('div', class_='news-item__content').text.replace('\n', ''), 'https://www.championat.com' + item.find('a', class_='news-item__title').get('href')])
-
+        spis.append([item.find('div', class_='news-item__content').text.replace('\n', ''),
+                     'https://www.championat.com' + item.find('a', class_='news-item__title').get('href')])
 
     return spis
 
@@ -70,43 +65,48 @@ async def send_photo(data):
     await bot.send_photo(chat_id=data[0], photo=photo)
 
 
-
-
-
-
-
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 bot = Bot(token='6910912601:AAGuk-ug_YZZ412jjMoW1RXHbftapThUrHY')
 dp = Dispatcher()
 
-murkub = ReplyKeyboardMarkup(keyboard=([KeyboardButton(text='📝 Последние новости 📝'), KeyboardButton(text='🎭 Трансферы 🎭')],
-                                           [KeyboardButton(text='💰 Стоимости футболистов 💰'), KeyboardButton(text='📌Таблицы турниров📌')],
-                                           [KeyboardButton(text='🕹 Мини-игры 🕹')]), resize_keyboard=True)
+murkub = ReplyKeyboardMarkup(
+    keyboard=([KeyboardButton(text='📝 Последние новости 📝'), KeyboardButton(text='🎭 Трансферы 🎭')],
+              [KeyboardButton(text='💰 Стоимости футболистов 💰'), KeyboardButton(text='📌Таблицы турниров📌')],
+              [KeyboardButton(text='🕹 Мини-игры 🕹')]), resize_keyboard=True)
 
 
 # ---
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer(f'👋 Здравствуте, {message.from_user.last_name}!\nЯ помогу вам узнать много интересного о ФУТБОЛЕ ⚽️\n😇 Пожалуйста, выберите интересующую категорию:', reply_markup=murkub)
+    await message.answer(
+        f'👋 Здравствуте, {message.from_user.last_name}!\nЯ помогу вам узнать много интересного о ФУТБОЛЕ ⚽\n😇 Пожалуйста, выберите интересующую категорию:',
+        reply_markup=murkub)
 
-@dp.message(F.text == '➡️ НАЗАД ➡️')
+
+@dp.message(F.text == '➡ НАЗАД ➡')
 async def news(message: Message):
     news = scrapping_func()
     await message.answer('🧐 Выбирайте что вас еще интересует... 🧐', reply_markup=murkub)
+
 
 # ---
 
 @dp.message(F.text == '📝 Последние новости 📝')
 async def news(message: Message):
     news = scrapping_func()
-    await message.answer(f'На данный момент получено новостей в количестве: {len(news)} шт...', reply_markup=ReplyKeyboardRemove())
+    await message.answer(f'На данный момент получено новостей в количестве: {len(news)} шт...',
+                         reply_markup=ReplyKeyboardRemove())
     time.sleep(1)
 
     for i, elem in enumerate(news):
-        await message.answer(f'👉 {i + 1}) {elem[0]}\n\n', reply_markup=InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='Подробнее', url=elem[1])]]))
-    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"', reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]], resize_keyboard=True))
+        await message.answer(f'👉 {i + 1}) {elem[0]}\n\n', reply_markup=InlineKeyboardMarkup(
+            inline_keyboard=[[InlineKeyboardButton(text='Подробнее', url=elem[1])]]))
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+
 
 # ---
 
@@ -187,6 +187,7 @@ async def _(message: Message, state: FSMContext):
 
     await state.set_state(Choose_country_season.choose_season_year)
 
+
 # ---
 
 @dp.message(F.text == 'Зима 2021')
@@ -198,13 +199,12 @@ async def _(message: Message, state: FSMContext):
 
     await state.update_data(choose_season_year=message.text)
 
-
     get_data_state = await state.get_data()
     data.append(get_data_state['choose_season_year'])
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
                                                           resize_keyboard=True))
 
 
@@ -217,14 +217,13 @@ async def _(message: Message, state: FSMContext):
 
     await state.update_data(choose_season_year=message.text)
 
-
     get_data_state = await state.get_data()
     data.append(get_data_state['choose_season_year'])
 
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
                                                           resize_keyboard=True))
 
 
@@ -242,8 +241,8 @@ async def _(message: Message, state: FSMContext):
 
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
                                                           resize_keyboard=True))
 
 
@@ -261,8 +260,8 @@ async def _(message: Message, state: FSMContext):
 
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
                                                           resize_keyboard=True))
 
 
@@ -271,19 +270,17 @@ async def _(message: Message, state: FSMContext):
     data = [message.chat.id]
     get_data_state = await state.get_data()
 
-
     data.append(get_data_state['choose_country'][:])
 
     await state.update_data(choose_season_year=message.text)
-
 
     get_data_state = await state.get_data()
     data.append(get_data_state['choose_season_year'])
 
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
                                                           resize_keyboard=True))
 
 
@@ -300,8 +297,8 @@ async def _(message: Message, state: FSMContext):
     data.append(get_data_state['choose_season_year'])
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
                                                           resize_keyboard=True))
 
 
@@ -321,13 +318,193 @@ async def _(message: Message, state: FSMContext):
     print(data)
     await send_photo(data)
     await state.clear()
-    await message.answer('Нажмите "➡️ НАЗАД ➡️, чтобы вернуться в меню"',
-                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡️ НАЗАД ➡️')]],
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
                                                           resize_keyboard=True))
 
 
 # ---
 
+@dp.message(F.text == '💰 Стоимости футболистов 💰')
+async def prices(message: Message, state: FSMContext):
+    await state.set_state(Price_footbollers.country)
+    await message.answer('Выберите страну...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='🇬🇧 Англия'), KeyboardButton(text='🇩🇪 Германия')],
+        [KeyboardButton(text='🇪🇸 Испания'), KeyboardButton(text='🇫🇷 Франция')],
+        [KeyboardButton(text='🇮🇹 Италия'), KeyboardButton(text='🇷🇺 Россия')]
+    ], resize_keyboard=True))
+
+
+@dp.message(F.text == '🇬🇧 Англия')
+async def __(message: Message, state: FSMContext):
+    await message.answer('Топ 50 самых дорогих футболстов Англии 🤑', reply_markup=ReplyKeyboardRemove())
+    db = sqlite3.connect('basedata.db')
+    cur = db.cursor()
+    cur.execute('SELECT * FROM Англия')
+    s = ''
+    for item in cur.fetchall()[:51]:
+        s += f'{item[0]}   --->   {item[1]}\n'
+    print(s)
+    await message.answer(s)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇩🇪 Германия')
+async def __(message: Message, state: FSMContext):
+    await message.answer('Топ 50 самых дорогих футболстов Германии 🤑', reply_markup=ReplyKeyboardRemove())
+    db = sqlite3.connect('basedata.db')
+    cur = db.cursor()
+    cur.execute('SELECT * FROM Германия')
+    s = ''
+    for item in cur.fetchall()[:51]:
+        s += f'{item[0]}   --->   {item[1]}\n'
+    print(s)
+    await message.answer(s)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇪🇸 Испания')
+async def __(message: Message, state: FSMContext):
+    await message.answer('Топ 50 самых дорогих футболстов Испании 🤑', reply_markup=ReplyKeyboardRemove())
+    db = sqlite3.connect('basedata.db')
+    cur = db.cursor()
+    cur.execute('SELECT * FROM Испания')
+    s = ''
+    for item in cur.fetchall()[:51]:
+        s += f'{item[0]}   --->   {item[1]}\n'
+    print(s)
+    await message.answer(s)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇫🇷 Франция')
+async def __(message: Message, state: FSMContext):
+    await message.answer('Топ 50 самых дорогих футболстов Франции 🤑', reply_markup=ReplyKeyboardRemove())
+    db = sqlite3.connect('basedata.db')
+    cur = db.cursor()
+    cur.execute('SELECT * FROM Франция')
+    s = ''
+    for item in cur.fetchall()[:51]:
+        s += f'{item[0]}   --->   {item[1]}\n'
+    print(s)
+    await message.answer(s)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇮🇹 Италия')
+async def __(message: Message, state: FSMContext):
+    await message.answer('Топ 50 самых дорогих футболстов Италии 🤑', reply_markup=ReplyKeyboardRemove())
+    db = sqlite3.connect('basedata.db')
+    cur = db.cursor()
+    cur.execute('SELECT * FROM Италия')
+    s = ''
+    for item in cur.fetchall()[:51]:
+        s += f'{item[0]}   --->   {item[1]}\n'
+    print(s)
+    await message.answer(s)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇷🇺 Россия')
+async def __(message: Message, state: FSMContext):
+    await message.answer('Топ 50 самых дорогих футболстов России 🤑', reply_markup=ReplyKeyboardRemove())
+    db = sqlite3.connect('basedata.db')
+    cur = db.cursor()
+    cur.execute('SELECT * FROM Россия')
+    s = ''
+    for item in cur.fetchall()[:51]:
+        s += f'{item[0]}   --->   {item[1]}\n'
+    print(s)
+    await message.answer(s)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '📌Таблицы турниров📌')
+async def tables(message: Message, state: FSMContext):
+    await state.set_state(Table_country.contry)
+    await message.answer('Выберите страну...', reply_markup=ReplyKeyboardMarkup(keyboard=[
+        [KeyboardButton(text='🇬🇧 Англия 🇬🇧'), KeyboardButton(text='🇩🇪 Германия 🇩🇪')],
+        [KeyboardButton(text='🇪🇸 Испания 🇪🇸'), KeyboardButton(text='🇫🇷 Франция 🇫🇷')],
+        [KeyboardButton(text='🇮🇹 Италия 🇮🇹'), KeyboardButton(text='🇷🇺 Россия 🇷🇺')]
+    ], resize_keyboard=True))
+
+
+@dp.message(F.text == '🇬🇧 Англия 🇬🇧')
+async def tables(message: Message, state: FSMContext):
+    photo = FSInputFile(f'Фотки турниров/Англия.png')
+    await bot.send_photo(chat_id=message.chat.id, photo=photo)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇩🇪 Германия 🇩🇪')
+async def tables(message: Message, state: FSMContext):
+    photo = FSInputFile(f'Фотки турниров/Германия.png')
+    await bot.send_photo(chat_id=message.chat.id, photo=photo)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇪🇸 Испания 🇪🇸')
+async def tables(message: Message, state: FSMContext):
+    photo = FSInputFile(f'Фотки турниров/Испания.png')
+    await bot.send_photo(chat_id=message.chat.id, photo=photo)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇫🇷 Франция 🇫🇷')
+async def tables(message: Message, state: FSMContext):
+    photo = FSInputFile(f'Фотки турниров/Франция.png')
+    await bot.send_photo(chat_id=message.chat.id, photo=photo)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇮🇹 Италия 🇮🇹')
+async def tables(message: Message, state: FSMContext):
+    photo = FSInputFile(f'Фотки турниров/Италия.png')
+    await bot.send_photo(chat_id=message.chat.id, photo=photo)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🇷🇺 Россия 🇷🇺')
+async def tables(message: Message, state: FSMContext):
+    photo = FSInputFile(f'Фотки турниров/Россия.png')
+    await bot.send_photo(chat_id=message.chat.id, photo=photo)
+    await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
+                                                          resize_keyboard=True))
+    await state.clear()
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------

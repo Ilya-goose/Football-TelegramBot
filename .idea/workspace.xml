@@ -4,56 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавил скрины для России">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Football-TelegramBot.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавил базу данных с футболистами и их стоимостями, добавил скрины таблиц чемпионатов, сделал функцию для просмотра новостей и трансферов">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Англия/44745676.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Англия/56e470c5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Англия/780d3f6f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Англия/b27818f1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Англия/c9470dbf.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Англия/c95f56ed.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Англия/ceb3bbfe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Германия/4538c9f8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Германия/4fb80a4f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Германия/_59eeaf5a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Германия/_841b3375.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Германия/_c981396a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Германия/e6f8b4cf.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Германия/Изображение WhatsApp 2024-04-09 в 20.55.37_e90b1e36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Испания/0215dfe4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Испания/1ef71dfb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Испания/_d090f547.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Испания/_ec5921e0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Испания/a8a0a8fe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Испания/c72c70d8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Испания/e5bf7cd1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Италия/13c0d81a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Италия/4084e9e9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Италия/4b7fb9fe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Италия/_90300273.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Италия/a4f194d9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Италия/dcacd541.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Италия/e1e4db12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Россия/11145e42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Россия/58112304.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Россия/5a463197.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Россия/a855f00c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Россия/c8999963.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Россия/dedaad59.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Россия/f4114529.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Франция/31ddfbe3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Франция/479a7ebf.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Франция/82fd12e8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Франция/a11b85f4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Франция/ba717224.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Франция/e53e217c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Трансферы Франция/e8f9df9e.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +49,7 @@
   "keyToString": {
     "Python.main (1).executor": "Run",
     "Python.main (4).executor": "Run",
+    "Python.main (5).executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -253,7 +207,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713691905186</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Добавил базу данных с футболистами и их стоимостями, добавил скрины таблиц чемпионатов, сделал функцию для просмотра новостей и трансферов">
+      <option name="closed" value="true" />
+      <created>1713709742126</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713709742126</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Добавил базу данных с футболистами и их стоимостями, добавил скрины таблиц чемпионатов, сделал функцию для просмотра новостей и трансферов">
+      <option name="closed" value="true" />
+      <created>1713709794723</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713709794723</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -266,6 +236,7 @@
     <MESSAGE value="Начал добавлять скрины для трансферов" />
     <MESSAGE value="Добавил скрины для Франции" />
     <MESSAGE value="Добавил скрины для России" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил скрины для России" />
+    <MESSAGE value="Добавил базу данных с футболистами и их стоимостями, добавил скрины таблиц чемпионатов, сделал функцию для просмотра новостей и трансферов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил базу данных с футболистами и их стоимостями, добавил скрины таблиц чемпионатов, сделал функцию для просмотра новостей и трансферов" />
   </component>
 </project>
