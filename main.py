@@ -8,10 +8,12 @@ from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove, KeyboardButt
     InlineKeyboardButton
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
+from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 import time
 import asyncio
 import sqlite3
+from random import sample, choice
 
 
 class Choose_country_season(StatesGroup):
@@ -25,6 +27,16 @@ class Price_footbollers(StatesGroup):
 
 class Table_country(StatesGroup):
     contry = State()
+
+
+class Game1(StatesGroup):
+    expansive_player = State()
+    raund = State()
+
+
+class Game2(StatesGroup):
+    raund = State()
+    end = State()
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -65,6 +77,10 @@ async def send_photo(data):
     await bot.send_photo(chat_id=data[0], photo=photo)
 
 
+def random_footbollers(spis, num):
+    return sample(spis, k=num)
+
+
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -86,9 +102,10 @@ async def cmd_start(message: Message):
 
 
 @dp.message(F.text == '➡ НАЗАД ➡')
-async def news(message: Message):
+async def news(message: Message, state: FSMContext):
     news = scrapping_func()
     await message.answer('🧐 Выбирайте что вас еще интересует... 🧐', reply_markup=murkub)
+    await state.clear()
 
 
 # ---
@@ -344,7 +361,6 @@ async def __(message: Message, state: FSMContext):
     s = ''
     for item in cur.fetchall()[:51]:
         s += f'{item[0]}   --->   {item[1]}\n'
-    print(s)
     await message.answer(s)
     await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
                          reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
@@ -361,7 +377,7 @@ async def __(message: Message, state: FSMContext):
     s = ''
     for item in cur.fetchall()[:51]:
         s += f'{item[0]}   --->   {item[1]}\n'
-    print(s)
+
     await message.answer(s)
     await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
                          reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
@@ -378,7 +394,7 @@ async def __(message: Message, state: FSMContext):
     s = ''
     for item in cur.fetchall()[:51]:
         s += f'{item[0]}   --->   {item[1]}\n'
-    print(s)
+
     await message.answer(s)
     await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
                          reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
@@ -395,7 +411,6 @@ async def __(message: Message, state: FSMContext):
     s = ''
     for item in cur.fetchall()[:51]:
         s += f'{item[0]}   --->   {item[1]}\n'
-    print(s)
     await message.answer(s)
     await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
                          reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
@@ -412,7 +427,7 @@ async def __(message: Message, state: FSMContext):
     s = ''
     for item in cur.fetchall()[:51]:
         s += f'{item[0]}   --->   {item[1]}\n'
-    print(s)
+
     await message.answer(s)
     await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
                          reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
@@ -429,7 +444,7 @@ async def __(message: Message, state: FSMContext):
     s = ''
     for item in cur.fetchall()[:51]:
         s += f'{item[0]}   --->   {item[1]}\n'
-    print(s)
+
     await message.answer(s)
     await message.answer('Нажмите "➡ НАЗАД ➡, чтобы вернуться в меню"',
                          reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
@@ -505,6 +520,211 @@ async def tables(message: Message, state: FSMContext):
                          reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='➡ НАЗАД ➡')]],
                                                           resize_keyboard=True))
     await state.clear()
+
+
+@dp.message(F.text == '🕹 Мини-игры 🕹')
+async def games(message: Message):
+    await message.answer('🎮 Выберите одну игру из представленный на клавиатуре...', reply_markup=ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text='👤 WHATS MY VALUE? 👤'), KeyboardButton(text='⚽ DRAFT ⚽')]],
+        resize_keyboard=True))
+
+
+sqore = 0
+
+
+@dp.message(F.text == '👤 WHATS MY VALUE? 👤')
+async def game1(message: Message, state: FSMContext):
+    await message.answer(
+        'Правила игры очень просты:\nВам будет предлагаться два футболиста.\nВаша задача угадать кто из них дороже, выбрав его на клавиатуре.\nИгра будет продолжаться до тех пор пока вы не ошибётесь.\nТак же вам будут начисляться очки за каждый пройденный раунд.\n\nНажмите ДАЛЕЕ для начала игры...',
+        reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='✅ ДАЛЕЕ ✅')]], resize_keyboard=True))
+
+
+@dp.message(F.text == '✅ ДАЛЕЕ ✅')
+async def ready1(message: Message, state: FSMContext):
+    bd = sqlite3.connect('basedata.db')
+    cur = bd.cursor()
+
+    spis = []
+    for item in ['Англия', 'Германия', 'Россия', 'Испания', 'Франция', 'Италия']:
+        cur.execute(f'SELECT * FROM {item}')
+        spis += cur.fetchall()
+
+    a, b = random_footbollers(spis, 2)
+    name1, price1 = a[0], [a[1].split()[0].replace(',', '.'), a[1].split()[1]]
+    name2, price2 = b[0], [b[1].split()[0].replace(',', '.'), b[1].split()[1]]
+
+    await state.set_state(Game1.expansive_player)
+
+    if price1[1] == price2[1] == 'млн':
+        if float(price1[0]) > float(price2[0]):
+            await state.update_data(expansive_player=name1)
+        else:
+            await state.update_data(expansive_player=name2)
+    elif price1[1] == price2[1] == 'тыс':
+        try:
+            if int(price1[0]) > int(price2[0]):
+                await state.update_data(expansive_player=name1)
+            else:
+                await state.update_data(expansive_player=name2)
+        except:
+            if float(price1[0]) > float(price2[0]):
+                await state.update_data(expansive_player=name1)
+            else:
+                await state.update_data(expansive_player=name2)
+    else:
+        await state.update_data(expansive_player=name1)
+
+    await state.set_state(Game1.raund)
+    await message.answer(f'{a[0]}   ----   {b[0]}', reply_markup=ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text=f'{name1}'), KeyboardButton(text=f'{name2}')]], resize_keyboard=True))
+
+
+@dp.message(F.text == '🔄 Попробовать еще раз 🔄')
+async def ddd(message: Message, state: FSMContext):
+    global sqore
+    sqore = 0
+
+    await message.answer('Нажмите ДАЛЕЕ для начала игры...',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='✅ ДАЛЕЕ ✅')]],
+                                                          resize_keyboard=True))
+
+
+@dp.message(Game1.raund)
+async def ddd(message: Message, state: FSMContext):
+    data = await state.get_data()
+    if message.text + ' ' == data['expansive_player']:
+        global sqore
+        sqore += 1
+        await message.answer('Подтвердите свой выбор, нажав кнопку ДАЛЕЕ на клавиатуре',
+                             reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='✅ ДАЛЕЕ ✅')]],
+                                                              resize_keyboard=True))
+    else:
+        await message.answer(f'Увы, но допущена ошибка. ☠\nВашь счет: {sqore}\nМожете попробовать снова!',
+                             reply_markup=ReplyKeyboardMarkup(keyboard=(
+                                 [[KeyboardButton(text='🔄 Попробовать еще раз 🔄'), KeyboardButton(text='➡ НАЗАД ➡')]]),
+                                 resize_keyboard=True))
+        await state.clear()
+
+
+# -----
+
+list_player = []
+list_bot = []
+spis_all = []
+
+
+@dp.message(F.text == '⚽ DRAFT ⚽')
+async def game2(message: Message, state: FSMContext):
+    await message.answer(
+        'Правила очень просты:\nВам будет предложен список футболистов, из который вам предстоит выбрать самых дорогих.\nПротив вас будет играть бот, который тоже будет пытаться собрать команду как можно дороже.\nПобеждает тот кто соберет команду дороже чем у абонента.\n\nНажмите ❇ ПРОДОЛЖИТЬ ❇ для начала игры...',
+        reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='❇ ПРОДОЛЖИТЬ ❇')]], resize_keyboard=True))
+    bd = sqlite3.connect('basedata.db')
+    cur = bd.cursor()
+
+    spis = []
+    for item in ['Англия', 'Германия', 'Россия', 'Испания', 'Франция', 'Италия']:
+        cur.execute(f'SELECT * FROM {item}')
+        spis += cur.fetchall()
+    global spis_all
+
+    spis_all = random_footbollers(spis, 22)
+
+
+@dp.message(F.text == '❇ ПРОДОЛЖИТЬ ❇')
+async def start_game2(message: Message, state: FSMContext):
+    if spis_all:
+        builder = ReplyKeyboardBuilder()
+        for item in spis_all:
+            builder.add(KeyboardButton(text=f'{item[0].strip()}'))
+        builder.adjust(2)
+
+        keyboard_murkab = builder.as_markup(resize_keyboard=True)
+
+        await message.answer('Выберите футболиста...', reply_markup=keyboard_murkab)
+        await state.set_state(Game2.raund)
+    else:
+        await message.answer('Игра окончена.Нажмите ✴ КОНЕЦ ИГРЫ ✴, чтобы узнать результат...\n',
+                             reply_markup=ReplyKeyboardMarkup(keyboard=([[KeyboardButton(text='✴ КОНЕЦ ИГРЫ ✴')]]),
+                                                              resize_keyboard=True))
+        await state.set_state(Game2.end)
+
+
+@dp.message(Game2.raund)
+async def ddd(message: Message, state: FSMContext):
+    global list_player, list_bot, spis_all
+
+    player_choose = [item for item in spis_all if item[0].strip() == message.text][0]
+
+    list_player.append(player_choose)
+    spis_all.remove(player_choose)
+
+    bot_choose = choice(spis_all)
+    list_bot.append(bot_choose)
+    spis_all.remove(bot_choose)
+
+    await message.answer('Бот сделал свой выбор. Нажмите ПРОДОЛЖИТЬ...',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=([[KeyboardButton(text='❇ ПРОДОЛЖИТЬ ❇')]]),
+                                                          resize_keyboard=True))
+
+
+@dp.message(Game2.end)
+async def ddd(message: Message, state: FSMContext):
+    print(list_player)
+    print(list_bot)
+
+    sqore_player = 0
+    for item in list_player:
+        if item[1].split()[1] == 'млн':
+            price = float(item[1].split()[0].replace(',', '.')) * 1000
+        else:
+            price = float(item[1].split()[0].replace(',', '.'))
+        sqore_player += price
+
+    sqore_bot = 0
+    for item in list_bot:
+        if item[1].split()[1] == 'млн':
+            price = float(item[1].split()[0].replace(',', '.')) * 1000
+        else:
+            price = float(item[1].split()[0].replace(',', '.'))
+        sqore_bot += price
+    await message.answer('Идет подсчет стоимости...', reply_markup=ReplyKeyboardRemove())
+    time.sleep(3)
+    if sqore_player > sqore_bot:
+        await message.answer(
+            f'🏆 Вы выиграли! 🏆\nВы набрали команду дороже чем Бот.\nСтоимость вашей команды: {sqore_player / 1000} млн €.\nСтоимость команды бота: {sqore_bot / 1000} млн €.\n\nНажмите 🔄 ИГРАТЬ СНОВА 🔄,чтобы играть еще раз, или ➡ НАЗАД ➡, чтобы вернуться в меню...',
+            reply_markup=ReplyKeyboardMarkup(
+                keyboard=[[KeyboardButton(text='🔄 ИГРАТЬ СНОВА 🔄'), KeyboardButton(text='➡ НАЗАД ➡')]],
+                resize_keyboard=True))
+    elif sqore_player < sqore_bot:
+        await message.answer(
+            f'☠ Вы проиграли. ☠\nБот набрал команду дороже чем у вас.\nСтоимость вашей команды: {sqore_player / 1000} млн €.\nСтоимость команды бота: {sqore_bot / 1000} млн €.\n\nНажмите 🔄 ИГРАТЬ СНОВА 🔄,чтобы играть еще раз, или ➡ НАЗАД ➡, чтобы вернуться в меню...',
+            reply_markup=ReplyKeyboardMarkup(
+                keyboard=[[KeyboardButton(text='🔄 ИГРАТЬ СНОВА 🔄'), KeyboardButton(text='➡ НАЗАД ➡')]],
+                resize_keyboard=True))
+    else:
+        await message.answer(
+            f'🤭 Ого! Похоже вы набрали команду по стоимости такую же как и ваш соперник! 🤭\nСтоимость вашей команды: {sqore_player / 1000} млн €.\nСтоимость команды бота: {sqore_bot / 1000} млн €.\n\nНажмите 🔄 ИГРАТЬ СНОВА 🔄,чтобы играть еще раз, или ➡ НАЗАД ➡, чтобы вернуться в меню...',
+            reply_markup=ReplyKeyboardMarkup(
+                keyboard=[[KeyboardButton(text='🔄 ИГРАТЬ СНОВА 🔄'), KeyboardButton(text='➡ НАЗАД ➡')]],
+                resize_keyboard=True))
+    await state.clear()
+
+
+@dp.message(F.text == '🔄 ИГРАТЬ СНОВА 🔄')
+async def ___(message: Message, state: FSMContext):
+    await message.answer('Нажмите ❇ ПРОДОЛЖИТЬ ❇ для начала игры...',
+                         reply_markup=ReplyKeyboardMarkup(keyboard=[[KeyboardButton(text='❇ ПРОДОЛЖИТЬ ❇')]],
+                                                          resize_keyboard=True))
+    bd = sqlite3.connect('basedata.db')
+    cur = bd.cursor()
+
+    spis = []
+    for item in ['Англия', 'Германия', 'Россия', 'Испания', 'Франция', 'Италия']:
+        cur.execute(f'SELECT * FROM {item}')
+        spis += cur.fetchall()
+    global spis_all
+
+    spis_all = random_footbollers(spis, 22)
 
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавил базу данных с футболистами и их стоимостями, добавил скрины таблиц чемпионатов, сделал функцию для просмотра новостей и трансферов">
+    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавил функции для просмотра стоимостей футболистов и таблиц турниров">
+      <change afterPath="$PROJECT_DIR$/.idea/Football-TelegramBot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -50,43 +51,16 @@
     "Python.main (1).executor": "Run",
     "Python.main (4).executor": "Run",
     "Python.main (5).executor": "Run",
+    "Python.main (7).executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/PyCharm Community Edition 2023.3.2/Projects",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Football-TelegramBot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.main" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -223,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713709794723</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Добавил функции для просмотра стоимостей футболистов и таблиц турниров">
+      <option name="closed" value="true" />
+      <created>1713809869182</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713809869182</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -237,6 +219,7 @@
     <MESSAGE value="Добавил скрины для Франции" />
     <MESSAGE value="Добавил скрины для России" />
     <MESSAGE value="Добавил базу данных с футболистами и их стоимостями, добавил скрины таблиц чемпионатов, сделал функцию для просмотра новостей и трансферов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил базу данных с футболистами и их стоимостями, добавил скрины таблиц чемпионатов, сделал функцию для просмотра новостей и трансферов" />
+    <MESSAGE value="Добавил функции для просмотра стоимостей футболистов и таблиц турниров" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил функции для просмотра стоимостей футболистов и таблиц турниров" />
   </component>
 </project>
