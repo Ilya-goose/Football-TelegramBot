@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавил requirements.txt">
+    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавил пояснительную записку">
+      <change afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +62,7 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Football-TelegramBot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,7 +75,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="D:\PyCharm Community Edition 2023.3.2\Projects\Football-TelegramBot\server.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -84,7 +86,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
+        <item itemvalue="Python.server" />
       </list>
     </recent_temporary>
   </component>
@@ -256,7 +258,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713942606157</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Добавил пояснительную записку">
+      <option name="closed" value="true" />
+      <created>1713944400740</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1713944400740</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Добавил пояснительную записку">
+      <option name="closed" value="true" />
+      <created>1713944488590</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1713944488590</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Добавил пояснительную записку">
+      <option name="closed" value="true" />
+      <created>1713945235752</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1713945235752</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -284,6 +310,7 @@
     <MESSAGE value="Добавил функции для просмотра стоимостей футболистов и таблиц турниров" />
     <MESSAGE value="Всё готово, я доделал мини-игры и подкорректировал работу программы" />
     <MESSAGE value="Добавил requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил requirements.txt" />
+    <MESSAGE value="Добавил пояснительную записку" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил пояснительную записку" />
   </component>
 </project>
