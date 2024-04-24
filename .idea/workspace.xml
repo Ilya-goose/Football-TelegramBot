@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавил пояснительную записку">
-      <change afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
+    <list default="true" id="01e208e7-dede-4a5c-b56e-aead96af9300" name="Changes" comment="Добавляю файлы, чтобы выгрузить проект на glitch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +280,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713945235752</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Добавляю файлы, чтобы выгрузить проект на glitch">
+      <option name="closed" value="true" />
+      <created>1713948267245</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1713948267245</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Добавляю файлы, чтобы выгрузить проект на glitch">
+      <option name="closed" value="true" />
+      <created>1713948587148</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1713948587148</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -311,6 +325,7 @@
     <MESSAGE value="Всё готово, я доделал мини-игры и подкорректировал работу программы" />
     <MESSAGE value="Добавил requirements.txt" />
     <MESSAGE value="Добавил пояснительную записку" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил пояснительную записку" />
+    <MESSAGE value="Добавляю файлы, чтобы выгрузить проект на glitch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавляю файлы, чтобы выгрузить проект на glitch" />
   </component>
 </project>
